@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>POST через iframe по событию</title>
+</head>
+<body>
+  <!-- Скрытый iframe для обработки ответа -->
+  <iframe name="targetFrame" style="display: none;"></iframe>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1" allowfullscreen frameborder="0" allow="autoplay; encrypted-media"></iframe>
+
+  
+  <!-- Форма отправки на другой домен -->
+  <form id="postForm" action="https://www.youtube.com/watch?v=f2f_HHxjqG4" method="POST" target="targetFrame">
+    <!-- Добавьте нужные параметры -->
+    <input type="hidden" name="param1" value="value1">
+    <input type="hidden" name="param2" value="value2">
+  </form>
+  
+  <!-- Кнопка для отправки формы -->
+  <button id="sendButton">Отправить POST-запрос</button>
+  
+  <script>
+    // При клике на кнопку отправляем форму
+    document.getElementById('sendButton').addEventListener('click', function() {
+      document.getElementById('postForm').submit();
+    });
+  </script>
+</body>
+</html>
